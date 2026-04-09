@@ -152,3 +152,9 @@ When finishing a work session:
 - summarize what was verified
 - call out what still needs live credentials or live E2E validation
 - give exact next commands or next engineering steps
+
+## Current implementation baseline (2026-04-09)
+
+- Monorepo bootstrap is in place with `apps/web`, `apps/api`, `apps/worker`, and core packages.
+- Dry-run provider and dry-run GitHub publish paths are required defaults for local verification.
+- Keep dashboard as the primary UX; avoid adding operator-critical flows only to CLI.

@@ -96,3 +96,11 @@ When live credentials are unavailable:
 - Use dry-run providers and mocked GitHub/Telegram adapters.
 - Keep orchestration, policy, and audit code paths real.
 - Record unverified-live scenarios in release notes and docs with exact setup steps.
+
+## Latest verification run (2026-04-09)
+
+- `pnpm lint`: pass
+- `pnpm typecheck`: pass
+- `pnpm test`: pass
+- `pnpm build`: pass
+- `pnpm smoke`: pass
