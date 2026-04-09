@@ -1,0 +1,71 @@
+:root {
+  color-scheme: light dark;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0b1020;
+  color: #dce5ff;
+}
+
+a {
+  color: #7ec5ff;
+  text-decoration: none;
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.card {
+  border: 1px solid #2a365f;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: #141c35;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-live { background: #123f24; color: #a8ffc9; }
+.badge-degraded { background: #4a2d07; color: #ffd7a8; }
+.badge-mock { background: #3b1f4f; color: #e5b6ff; }
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: #3564ff;
+  color: white;
+  cursor: pointer;
+}
+
+button.secondary { background: #2d3a66; }
+input, select, textarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #314070;
+  background: #0f1730;
+  color: #dce5ff;
+  padding: 8px;
+}
+
+textarea { min-height: 110px; }

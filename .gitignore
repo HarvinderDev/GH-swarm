@@ -1,0 +1,9 @@
+node_modules
+.pnpm-store
+.turbo
+.next
+.DS_Store
+.env
+.env.*
+
+apps/web/tsconfig.tsbuildinfo
