@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@swarm/domain": ["packages/domain/src/index.ts"],
+      "@swarm/db": ["packages/db/src/index.ts"],
+      "@swarm/provider-core": ["packages/provider-core/src/index.ts"],
+      "@swarm/provider-codex": ["packages/provider-codex/src/index.ts"],
+      "@swarm/github": ["packages/github/src/index.ts"],
+      "@swarm/orchestrator": ["packages/orchestrator/src/index.ts"],
+      "@swarm/policy": ["packages/policy/src/index.ts"],
+      "@swarm/shared": ["packages/shared/src/index.ts"],
+      "@swarm/ui": ["packages/ui/src/index.ts"],
+      "@swarm/cli-admin": ["packages/cli-admin/src/index.ts"]
+    }
+  }
+}

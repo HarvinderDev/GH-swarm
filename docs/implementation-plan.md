@@ -120,3 +120,9 @@
 - No undocumented credential extraction.
 - Every external action must produce audit evidence.
 - Prefer real boundaries + mock mode where live dependencies are unavailable.
+
+## Progress update (2026-04-09)
+
+- Milestone 1 completed: monorepo, scripts, CI, env, docker-compose, and baseline apps/packages created.
+- Milestone 2/3/4/5 vertical-slice subset completed: intent->plan->run orchestration, provider boundary, run artifacts/timeline, approval gate, and dry-run draft PR publish path exposed in API and dashboard flow.
+- Remaining roadmap items (Telegram, remote runners hardening, deeper auth/live integrations) continue in later milestones.

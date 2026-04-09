@@ -1,0 +1,23 @@
+{
+  "name": "codex-github-swarm",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.10.0",
+  "scripts": {
+    "install:all": "pnpm install",
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "smoke": "pnpm --filter @swarm/api smoke && pnpm --filter @swarm/worker smoke",
+    "seed:demo": "pnpm --filter @swarm/api seed:demo"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "eslint": "^9.24.0",
+    "typescript": "^5.8.3",
+    "turbo": "^2.5.0",
+    "vitest": "^3.1.1"
+  }
+}
