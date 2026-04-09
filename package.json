@@ -1,0 +1,16 @@
+{
+  "name": "codex-github-swarm",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run --workspaces build",
+    "typecheck": "npm run --workspaces typecheck",
+    "test": "npm run --workspaces test"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
