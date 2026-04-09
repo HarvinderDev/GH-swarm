@@ -1,0 +1,50 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "apps/web"
+    },
+    {
+      "path": "apps/api"
+    },
+    {
+      "path": "apps/worker"
+    },
+    {
+      "path": "packages/domain"
+    },
+    {
+      "path": "packages/db"
+    },
+    {
+      "path": "packages/orchestrator"
+    },
+    {
+      "path": "packages/provider-core"
+    },
+    {
+      "path": "packages/provider-codex"
+    },
+    {
+      "path": "packages/github"
+    },
+    {
+      "path": "packages/runners"
+    },
+    {
+      "path": "packages/notifications"
+    },
+    {
+      "path": "packages/policy"
+    },
+    {
+      "path": "packages/shared"
+    },
+    {
+      "path": "packages/ui"
+    },
+    {
+      "path": "packages/cli-admin"
+    }
+  ]
+}
