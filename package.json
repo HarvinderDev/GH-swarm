@@ -1,0 +1,20 @@
+{
+  "name": "codex-github-swarm",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Self-hosted dashboard-first conversational AI engineering manager for GitHub repositories.",
+  "scripts": {
+    "lint": "node scripts/lint-check.mjs",
+    "typecheck": "node scripts/typecheck-check.mjs",
+    "test": "node scripts/test-check.mjs",
+    "build": "node scripts/build-check.mjs",
+    "smoke": "bash scripts/smoke-all.sh",
+    "smoke:onboarding": "bash scripts/smoke-onboarding.sh",
+    "smoke:chat-intent": "bash scripts/smoke-chat-intent.sh",
+    "smoke:approval": "bash scripts/smoke-approval-flow.sh",
+    "smoke:publish-dry-run": "bash scripts/smoke-publish-dry-run.sh"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
