@@ -21,8 +21,9 @@ async function buildServer() {
   app.get('/provider/health', {
     config: {
       rateLimit: {
-        max: 20,
-        timeWindow: '1 minute'
+        max: 5,
+        timeWindow: '1 minute',
+        ban: 2
       }
     }
   }, async () => provider.healthCheck());
