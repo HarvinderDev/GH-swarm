@@ -10,7 +10,11 @@ async function buildServer() {
   const orchestrator = new SwarmOrchestrator(provider, store);
 
   const app = Fastify({ logger: true });
-  await app.register(rateLimit, { global: false });
+  await app.register(rateLimit, {
+    global: true,
+    max: 100,
+    timeWindow: '1 minute'
+  });
 
   app.get('/health', async () => ({ ok: true, service: 'api' }));
   app.get('/provider/health', {
