@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import rateLimit from '@fastify/rate-limit';
 import { CodexProvider } from '@swarm/provider-codex';
 import { SwarmOrchestrator } from '@swarm/orchestrator';
 import { createRuntimeStore } from './store.js';
@@ -10,8 +11,21 @@ async function buildServer() {
 
   const app = Fastify({ logger: true });
 
+  await app.register(rateLimit, {
+    global: true,
+    max: 100,
+    timeWindow: '1 minute'
+  });
+
   app.get('/health', async () => ({ ok: true, service: 'api' }));
-  app.get('/provider/health', async () => provider.healthCheck());
+  app.get('/provider/health', {
+    config: {
+      rateLimit: {
+        max: 20,
+        timeWindow: '1 minute'
+      }
+    }
+  }, async () => provider.healthCheck());
   app.get('/state', async () => store);
 
   app.post('/workspaces', {
