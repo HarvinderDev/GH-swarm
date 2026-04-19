@@ -76,6 +76,123 @@ async function buildServer() {
     return orchestrator.runIntent(body.workspaceId, body.repoId, body.prompt);
   });
 
+
+  await app.register(rateLimit, {
+    global: true,
+    max: 100,
+    timeWindow: '1 minute'
+  });
+
+  app.get('/health', async () => ({ ok: true, service: 'api' }));
+  app.get('/provider/health', {
+    config: {
+      rateLimit: {
+        max: 5,
+        timeWindow: '1 minute',
+        ban: 2
+      }
+    }
+  }, async () => provider.healthCheck());
+  app.get('/state', async () => store);
+
+  app.post('/workspaces', {
+    schema: {
+      body: {
+        type: 'object',
+        required: ['name'],
+        additionalProperties: false,
+        properties: { name: { type: 'string', minLength: 1 } }
+      }
+    }
+  }, async (req) => {
+    const body = req.body as { name: string };
+    return orchestrator.createWorkspace(body.name);
+  });
+
+  app.post('/repos', {
+    schema: {
+      body: {
+        type: 'object',
+        required: ['workspaceId', 'fullName'],
+        additionalProperties: false,
+        properties: {
+          workspaceId: { type: 'string', minLength: 1 },
+          fullName: { type: 'string', minLength: 3 }
+  app.get('/health', async () => ({ ok: true, service: 'api' }));
+  app.get('/provider/health', async () => provider.healthCheck());
+  app.get('/state', async () => store);
+
+  app.post('/workspaces', {
+    schema: {
+      body: {
+        type: 'object',
+        required: ['name'],
+        additionalProperties: false,
+        properties: { name: { type: 'string', minLength: 1 } }
+      }
+    }
+  }, async (req) => {
+    const body = req.body as { name: string };
+    return orchestrator.createWorkspace(body.name);
+  });
+
+  app.post('/repos', {
+    schema: {
+      body: {
+        type: 'object',
+        required: ['workspaceId', 'fullName'],
+        additionalProperties: false,
+        properties: {
+          workspaceId: { type: 'string', minLength: 1 },
+          fullName: { type: 'string', minLength: 3 }
+        }
+      }
+    }
+  }, async (req) => {
+    const body = req.body as { workspaceId: string; fullName: string };
+    return orchestrator.createRepo(body.workspaceId, body.fullName);
+  });
+
+  app.post('/chat/intents', {
+    schema: {
+      body: {
+        type: 'object',
+        required: ['workspaceId', 'repoId', 'prompt'],
+        additionalProperties: false,
+        properties: {
+          workspaceId: { type: 'string', minLength: 1 },
+          repoId: { type: 'string', minLength: 1 },
+          prompt: { type: 'string', minLength: 1 }
+        }
+      }
+    }
+  }, async (req) => {
+    const body = req.body as { workspaceId: string; fullName: string };
+    return orchestrator.createRepo(body.workspaceId, body.fullName);
+  });
+
+  app.post('/chat/intents', {
+    schema: {
+      body: {
+        type: 'object',
+        required: ['workspaceId', 'repoId', 'prompt'],
+        additionalProperties: false,
+        properties: {
+          workspaceId: { type: 'string', minLength: 1 },
+          repoId: { type: 'string', minLength: 1 },
+          prompt: { type: 'string', minLength: 1 }
+        }
+      }
+    }
+  }, async (req) => {
+    const body = req.body as { workspaceId: string; repoId: string; prompt: string };
+    return orchestrator.runIntent(body.workspaceId, body.repoId, body.prompt);
+  });
+
+    const body = req.body as { workspaceId: string; repoId: string; prompt: string };
+    return orchestrator.runIntent(body.workspaceId, body.repoId, body.prompt);
+  });
+
   app.post('/approvals/:runId/approve', {
     schema: {
       params: {
@@ -112,6 +229,7 @@ async function buildServer() {
 
   app.setErrorHandler((error, _, reply) => {
     const err = error as { message?: string; validation?: unknown; statusCode?: number };
+    const err = error as { message?: string; validation?: unknown };
 
     if (err.validation) {
       reply.status(400).send({ message: 'Invalid request', detail: err.message ?? 'Validation failed' });
